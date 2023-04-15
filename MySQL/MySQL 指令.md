@@ -32,5 +32,11 @@
 
   返回所有a在集合里的 数据的信息
 
+- `select * from XXX order by XXX ASC;`
 
+  升排序
+
+- `select * from XXX order by XXX DESC;`
+
+  降排序
 
