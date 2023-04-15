@@ -87,3 +87,15 @@ Create Table: CREATE TABLE `t1` (
 
 **也可以在制作表手动设置**
 
+### 唯一值
+
+```mysql
+mysql> create table t1(
+    -> id int unsigned primary key auto_increment,
+    -> name varchar(30) not null,
+    -> email varchar(40) unique not null);
+```
+
+主键值只能有一个，但唯一值不同；
+
+唯一值可以为空，两个数据都为空没有问题 
