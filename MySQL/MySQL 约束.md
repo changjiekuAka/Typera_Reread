@@ -99,3 +99,12 @@ mysql> create table t1(
 主键值只能有一个，但唯一值不同；
 
 唯一值可以为空，两个数据都为空没有问题 
+
+### 外键
+
+```mysql
+foreign key(字段名) references 主表(列)
+```
+
+外键约束定义在从表上，主表必须有主键约束或者unique，从表数据必须在主表存在或NULL
+

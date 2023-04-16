@@ -39,4 +39,22 @@
 - `select * from XXX order by XXX DESC;`
 
   降排序
+  
+- `update table student set student_id = 666 where id = 104;`
+
+  修改`id`为 104 的学生的`student_id` 为 666
+
+- `delete from student where id = 104`
+
+  删除表中`id`为104的数据
+
+- `insert into student(id,name) values(2,'吉吉暴') on duplicate key update id = 2,name='超人墙';`
+
+  插入失败变为跟新数据 repalce也可以
+
+
+
+
+
+​		
 
