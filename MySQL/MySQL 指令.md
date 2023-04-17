@@ -51,10 +51,19 @@
 - `insert into student(id,name) values(2,'吉吉暴') on duplicate key update id = 2,name='超人墙';`
 
   插入失败变为跟新数据 repalce也可以
+  
+- `select id, name, 科目 + 科目 + 科目 total from XXX;`
 
+  `total` 为三个科目的成绩  
 
+### where
 
+![image-20230417104922076](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230417104922076.png)
 
+<=> 可以查NULL = 不可以 ； is NULL，is not NULL
 
-​		
+`select * from XXX order by math desc,english asc,chinese asc;`
 
+`math`相等就按`english`排，以此类推
+
+![image-20230417232428066](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230417232428066.png)
