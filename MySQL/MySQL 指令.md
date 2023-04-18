@@ -67,3 +67,39 @@
 `math`相等就按`english`排，以此类推
 
 ![image-20230417232428066](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230417232428066.png)
+
+### TRUNCATE
+
+```mysql
+TRUNCATE [TABLE] table_name;
+```
+
+普通的删除delete表中的数据，AUTO_INCREMENT不会被清零；
+
+truncate 会把它清零
+
+
+
+***增、删、查、改，从磁盘load到内存***
+
+
+
+```mysql
+select count(*) from XXX;
+```
+
+统计XXX中的数据的数量，NULL不参与运算
+
+
+
+```mysql
+mysql> select count(distinct math) from exam;
+```
+
+统计去重的`math`成绩
+
+```mysql
+mysql> select count(english),sum(english) from XXX where english < 60;
+```
+
+统计英语成绩小于60的人数，以及他们的总英语成绩
