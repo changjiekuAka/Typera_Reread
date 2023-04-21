@@ -68,6 +68,16 @@
 
 ![image-20230417232428066](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230417232428066.png)
 
+> 注意：where里面不可以使用avg等内置函数
+
+```mysql
+mysql> select ral from XXX where avg(ral) < 20;
+```
+
+`where`是根据条件删选出数据，`avg`是根据数据得到结果，`where`的执行顺序更靠前，此时两者就矛盾了，`where`要`avg`的结果得到数据，`avg`要数据得到结果。
+
+
+
 ### TRUNCATE
 
 ```mysql
@@ -89,5 +99,4 @@ select count(*) from XXX;
 ```
 
 统计XXX中的数据的数量，NULL不参与运算
-
 
