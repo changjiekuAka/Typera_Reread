@@ -55,3 +55,27 @@ mysql> select dep,avg(ral) 平均工资 from XXX where ral > 1000 group by dep h
 ### 日期函数
 
 ![image-20230421211633361](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230421211633361.png)
+
+```mysql
+mysql> select * from XXX where data_add(datetime,interval 2 minute) > now();
+```
+
+选出两分钟之内插入的数据
+
+### 字符串函数‘
+
+![image-20230422231413111](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230422231413111.png)
+
+#### charset
+
+```mysql
+mysql> select charset(列) from XXX;
+```
+
+#### concat
+
+```mysql
+mysql> select concat("nihoa",'world',123,456.78);
+```
+
+整数和浮点数自动转换成字符串
