@@ -72,10 +72,46 @@ mysql> select * from XXX where data_add(datetime,interval 2 minute) > now();
 mysql> select charset(列) from XXX;
 ```
 
+返回字节数
+
 #### concat
 
 ```mysql
 mysql> select concat("nihoa",'world',123,456.78);
 ```
 
-整数和浮点数自动转换成字符串
+拼接字符串，整数和浮点数自动转换成字符串
+
+#### length
+
+```mysql
+mysql> select length('你好');
+```
+
+返回字符串长度，单位是字节，不同的字符集编码，结果就不同
+
+#### substring
+
+```mysql
+mysql> select substring('你好',2,1);		/******结果为 好 *******/
+```
+
+> ​	注意：最后一个参数表示的是字符的个数，不是字节数。
+
+第二个参数为第几个字符开始
+
+#### replace
+
+```mysql
+mysql> select replace(name,'X','大角牛') from XXX where ral > 2000;
+```
+
+把`name`中包含`X`的替换成 `大角牛`
+
+#### instr
+
+```mysql
+mysql> select * form XXX where instr(name,'A') > 0;
+```
+
+查找名字中带有`A`的人，返回字符出现的位置

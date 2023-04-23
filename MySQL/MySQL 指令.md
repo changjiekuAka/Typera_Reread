@@ -55,6 +55,10 @@
 - `select id, name, 科目 + 科目 + 科目 total from XXX;`
 
   `total` 为三个科目的成绩  
+  
+- `select * from XXX where name like '%S%'`
+
+  查看名字中包含`S`的有哪些人
 
 ### where
 
