@@ -111,7 +111,51 @@ mysql> select replace(name,'X','大角牛') from XXX where ral > 2000;
 #### instr
 
 ```mysql
-mysql> select * form XXX where instr(name,'A') > 0;
+mysql> select * from XXX where instr(name,'A') > 0;
 ```
 
 查找名字中带有`A`的人，返回字符出现的位置
+
+#### strcmp
+
+```mysql
+mysql> select * from XXX where strcmp(name,'qcv') = 0;
+```
+
+选出名字是`qcv`的人
+
+- 等于 返回0
+- 小于 返回-1
+- 大于 返回 1
+
+### 数学函数
+
+![image-20230424102726411](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230424102726411.png)
+
+#### conv
+
+```mysql
+mysql> select conv(10,10,16);
+```
+
+从十进制转为16进制
+
+### 其他函数
+
+#### password
+
+```mysql
+mysql> select password('1234');
+```
+
+可以对设置的密码进行加密
+
+#### 子查询
+
+```mysql
+mysql> select name,job from XXX where ral > (select avg(ral) from XXX);
+```
+
+查询工资大于平均工资的人的姓名和职位
+
+子查询查询先查子`select`的
