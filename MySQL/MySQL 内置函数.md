@@ -142,7 +142,7 @@ mysql> select conv(10,10,16);
 
 ### 其他函数
 
-#### password
+#### password、md5
 
 ```mysql
 mysql> select password('1234');
@@ -150,40 +150,12 @@ mysql> select password('1234');
 
 可以对设置的密码进行加密
 
-#### 子查询
+![image-20230426093916252](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230426093916252.png)
 
-```mysql
-mysql> select name,job from XXX where ral > (select avg(ral) from XXX);
-```
+------
 
-查询工资大于平均工资的人的姓名和职位
+![image-20230426093847258](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230426093847258.png)
 
-子查询查询先查子`select`的
+------
 
-### 多表查询
-
-```mysql
-mysql> select name,depno from XXX,XXX where XXX.depno = XXX.depno;
-```
-
-最终我们查的始终只有一个表，第一个表中的数据依次与第二个表中的数据进行拼接。
-
-### 自链接
-
-```mysql
-mysql> select * from XXX as t1,XXX as t2; 
-```
-
-自链接成功要求必须两个表**重命名**
-
-### 多行查询
-
-```msyql
-mysql> select * from XXX where job in (select distinct job from XXX where depno > 10); 
-```
-
-有时候自查询查询的结果可能有多行数据：
-
-`in` ：只要job信息在子查询出来的信息里面就可以列出来
-
-`all`:  意思是把子查询的结果看成一个集合
+`password`生成的有41位，`md5`生成的有32位
