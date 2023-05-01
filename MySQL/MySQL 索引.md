@@ -8,6 +8,14 @@
 
 ​	数据是存储在磁盘上的，如果没有索引，查询数据就需要将数据加载到内存中来，依次进行检索，读取磁盘次数较多。
 
+> 注意：Mysql与磁盘进行交互的单位是16kb，在MySQL这里叫做page
+>
+> <img src="C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230430170930448.png" alt="image-20230430170930448" style="zoom: 200%;" />
+>
+> page的结构：
+>
+> ![image-20230430181111027](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230430181111027.png)
+
 ### 好处
 
 ​	索引不需要扫描全表，可以通过索引表找到该数据的物理地址访问数据。
@@ -17,3 +25,10 @@
 - 创建索引会占用存储空间。如果你在表上创建了太多的索引，那么表的大小将会变得很大。
 - 当你执行INSERT、UPDATE和DELETE操作时，MySQL需要同时更新索引，这需要更多的时间和资源。
 
+### 内核结构
+
+![image-20230501101518317](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230501101518317.png)
+
+> 注意：叶子节点是连接在一起的(方便范围查找)，目录表不是！
+
+有主键的表有b+树
