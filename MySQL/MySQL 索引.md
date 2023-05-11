@@ -32,3 +32,21 @@
 > 注意：叶子节点是连接在一起的(方便范围查找)，目录表不是！
 
 有主键的表有b+树
+
+### 聚簇vs非聚簇 
+
+![image-20230507182853245](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230507182853245.png)
+
+MyISAM引擎创建普通键索引，就是重新创一个新的表出来，保存数据记录的地址
+
+Innodb引擎创建普通键索引，去普通索引找会找到主键，然后再用主键去主键表里去寻找；普通索引里没有数据，这种查询叫回表查询
+
+```mysql
+mysql> alter table XXX add index(name);
+```
+
+```mysql
+mysql> alter table XXX add unique(name);
+```
+
+普通索引和唯一索引是没有差别的
