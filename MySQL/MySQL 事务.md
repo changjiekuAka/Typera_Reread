@@ -58,3 +58,9 @@ set global transaction isolation level READ UNCOMMITED;
 ### serializable
 
 串行化的隔离等级，一个事务进行修改操作会阻塞，只有等另一个事务commit后，才会执行阻塞事务后续的sql语句
+
+### 隐藏列字段
+
+![image-20230513205654098](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230513205654098.png)
+
+> 注意：删除flag字段，一个事务再进行的过程中，是不能看到其他事务进行操作的变化的，所以对于删除操作，使用flag表示已经删除，实际得等与删除数据相关的事务结束，清理线程回去清理
