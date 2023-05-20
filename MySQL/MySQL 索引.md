@@ -41,6 +41,8 @@
 
 ![image-20230507182853245](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230507182853245.png)
 
+聚簇索引相当于属性和数据是耦合的
+
 MyISAM引擎创建普通键索引，就是重新创一个新的表出来，保存数据记录的地址
 
 Innodb引擎创建普通键索引，去普通索引找会找到主键，然后再用主键去主键表里去寻找；普通索引里没有数据，这种查询叫回表查询
