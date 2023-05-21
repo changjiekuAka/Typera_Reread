@@ -45,7 +45,7 @@
 
 MyISAM引擎创建普通键索引，就是重新创一个新的表出来，保存数据记录的地址
 
-Innodb引擎创建普通键索引，去普通索引找会找到主键，然后再用主键去主键表里去寻找；普通索引里没有数据，这种查询叫回表查询
+Innodb引擎创建普通键索引只不过叶子节点保存的是主键ID，去普通索引找会找到主键，然后再用主键去主键表里去寻找；普通索引里没有数据，这种查询叫回表查询
 
 ```mysql
 mysql> alter table XXX add index(name);
@@ -56,3 +56,23 @@ mysql> alter table XXX add unique(name);
 ```
 
 普通索引和唯一索引是没有差别的
+
+非聚簇索引记录的地址可以是物理地址，如果查找发现数据不在内存，通过物理地址load进来，再把物理地址改成内存地址
+
+```mysql
+mysql> create table user(id int primary key,name varchar(20) not null);
+```
+
+```mysql
+mysql> create table user1(id int,name varchar(20) not null,primary key(id));
+```
+
+```mysql
+mysql> alter table user drop primary key;
+```
+
+```mysql
+mysql> alter table user add primary key(id);
+```
+
+   
