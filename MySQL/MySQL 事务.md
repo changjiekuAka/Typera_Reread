@@ -1,27 +1,47 @@
 # MySQL 事务
 
-MySQL事务本质不是数据库软件天然就有的，他是为了简化程序员的工作模型，**多个sql语句合在一起** 当然还得满足四个属性：原子性 隔离性 持久性 --> 一致性
+`MySQL`事务本质不是数据库软件天然就有的，他是为了简化程序员的工作模型，**多个sql语句合在一起** 当然还得满足四个属性：原子性 隔离性 持久性 --> 一致性
 
-mysqld里有很多事务，`需要先描述再组织`
+`Innodb` 引擎才支持事务
+
+------
+
+`mysqld`里有很多事务，`需要先描述再组织`
 
 ```mysql
 mysql> begin;
 ```
 
-开始一个事务，后续输入的sql语句都在事务中 
+开始一个事务，后续输入的`sql`语句都在事务中 
 
 ------
 
-- 如果在事务提交前，mysql奔溃了(ctrl + /)，那么事务会进行回滚到开始的位置
+- 如果在事务提交前，`mysql`奔溃了(ctrl + /)，那么事务会进行回滚到开始的位置
 - 如果提交了，再崩溃是没有影响的
-- 事务可以手动rollback回滚到savepoint
+- 事务可以手动`rollback`回滚到`savepoint`
 - 如果提交了，就不存在回滚了
 
 ------
 
-autocommit并不影响我们手动begin和end中间的sql语句，影响的是我们平常使用的单sql语句，单sql语句其实就相当于是一个事务，如果 set autocommit = 0，没有commit，mysql奔溃，同样也会回滚
+`autocommit`并不影响我们手动`begin`和`end`中间的sql语句，影响的是我们平常使用的单sql语句，单sql语句其实就相当于是一个事务，如果 `set autocommit = 0`，没有`commit`，`mysql`奔溃，同样也会回滚
 
-sql语句执行完后，会根据autocommit判断事务是否自动提交
+`sql`语句执行完后，会根据`autocommit`判断事务是否自动提交
+
+### 回滚
+
+```mysql
+mysql> save point p1; #设置保存点
+```
+
+```mysql
+mysql> rollback; #回滚到事务的开始部分
+```
+
+```mysql
+mysql> rollback to 保存点;
+```
+
+
 
 ------
 
@@ -43,11 +63,11 @@ set global transaction isolation level READ UNCOMMITED;
 
 ### READ UNCOMMITTED
 
-这个隔离等级表示一个事务在还没有提交前，其他事务可以看到我操作的数据 
+这个隔离等级表示一个事务在还没有提交前，其他事务可以看到我操作的数据 ，`脏读`
 
 ### READ COMMITTED
 
-这个隔离等级代表，一个事务只有commit后才能被其他的事务看见
+这个隔离等级代表，一个事务只有commit后才能被其他的事务看见，`不可重复读`
 
 ### REAPEATABLE-READ
 
