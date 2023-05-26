@@ -90,3 +90,5 @@ set global transaction isolation level READ UNCOMMITED;
 ![image-20230514112056717](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20230514112056717.png)
 
 因为事务的开始是有先有后的，先到和后到的事务看到的东西应该是不一样的
+
+### 隔离级别决定是快照读还是当前读

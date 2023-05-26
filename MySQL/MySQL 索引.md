@@ -75,4 +75,18 @@ mysql> alter table user drop primary key;
 mysql> alter table user add primary key(id);
 ```
 
-   
+```mysql
+mysql> create index 索引名 on user(id);
+```
+
+```mysql
+mysql> alter table user drop index 索引名;
+```
+
+### 全文索引
+
+```mysql
+mysql> select * from XXX where match(title,body) against('database');
+```
+
+只有MyISAM引擎可以
