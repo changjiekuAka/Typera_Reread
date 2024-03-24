@@ -15,7 +15,7 @@ service UserServiceRpc
 }
 ```
 
-定义下面的选项，表示生成service服务类和rpc方法描述
+定义下面的选项，表示生成service服务类和rpc方法描述(默认情况下不生成)
 
 ```protobuf
 option cc_generic_services = true;
@@ -25,7 +25,7 @@ LoginRequest 实际就是继承与Message类
 
 ![image-20240318171757511](C:\Users\ZZZXXXJJ\AppData\Roaming\Typora\typora-user-images\image-20240318171757511.png)
 
-**服务提供者**
+### **服务提供者**(callee)
 
 ```
 class UserServiceRpc : public ::PROTOBUF_NAMESPACE_ID::Service {
@@ -49,7 +49,7 @@ class UserServiceRpc : public ::PROTOBUF_NAMESPACE_ID::Service {
                        ::google::protobuf::Closure* done);
 ```
 
-**服务消费者，代理类**
+**服务消费者，代理类(caller)**
 
 ```
 class UserServiceRpc_Stub : public UserServiceRpc {
